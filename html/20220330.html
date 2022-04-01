@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pop1 {
+            background-color: bisque;
+            border: 1px solid #000;
+            width: 200px; height: 100px;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            let tag = document.createElement("h1");
+            let txt = document.createTextNode("Javascript DOM을 공부해봅시다!");
+            tag.appendChild(txt);
+            tag.style.color = "red";
+            document.body.appendChild(tag);
+
+            let atag = document.createElement("a");
+            atag.href = "https://www.naver.com/";
+            atag.target = "_blank";
+            let atxt = document.createTextNode("Click");
+            atag.appendChild(atxt);
+            document.body.appendChild(atag);
+
+            let img = document.createElement("img");
+            img.src = "https://cdn.pixabay.com/photo/2022/02/14/12/10/plane-7013022_960_720.jpg";
+            img.alt = "이미지 띄우기 예제";
+            img.style.width = "400px";
+            document.body.appendChild(img); // 자식 요소를 덧붙인다
+
+            let input = document.createElement("input");
+            // input.type = "password";
+            input.setAttribute("type", "password");
+            input.setAttribute("name", "pwd");
+            document.body.appendChild(input);
+
+            let h1sel = document.getElementsByTagName("h1");
+
+            let getList = document.getElementById("list"); // 단일
+            getList.style.borderStyle = "solid"; // background-color = backgroundColor
+            let getItem = document.getElementsByClassName("item"); // 복수형
+            getItem[0].style.backgroundColor = "red"; 
+            let getTag = document.getElementsByTagName("li");
+            getTag[0].style.color = "blue";
+            let getName = document.getElementsByName("pwd");
+            getName[0].style.borderColor = "blue";
+
+            let getQ = document.querySelectorAll("#list > .item");
+            getQ[0].style.backgroundColor = "green"
+        }
+        // document.write();
+        // document.createElement("h1").appendChild(document.createTextNode("Javascript DOM을 공부해봅시다!"));
+    </script>
+</head>
+<body>
+    <!-- DOM
+    Document Object Model
+    html tag !== dom
+    html, head, body, p, h1, ... 접근, 선택 -->
+    <div class="pop1">
+        <button type="button" onclick="">닫기</button>
+        임시 팝업 입니다.
+    </div>
+    팝업 열기
+    <p>안녕하세요.</p>
+    <ul id="list">
+        <li class="item">item</li>
+        <li class="item">item</li>
+        <li class="item">item</li>
+    </ul>
+</body>
+</html>

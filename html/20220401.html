@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .container {
+            display: flex;
+            border: 1px solid #000;
+        }
+        .main_img img{
+            width: 400px;
+        }
+        ul {
+            margin-right: 10px;
+        }
+        li > img {
+            width: 100px;
+        }
+        .inner_contents{
+            text-align: center;
+            overflow: hidden;
+            height: 450px;
+        }
+
+        .inner_footer {
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            let big = document.querySelector(".main_img > img");
+            let small = document.querySelectorAll(".img1");
+            // console.log(small[0].src);
+            console.log(big.src);
+
+            for( let i=0; i<small.length; i++) {
+                small[i].onclick = imgChange;
+            }
+        }
+        
+        function imgChange() {
+                let imgSrc = this.src;
+                big.setAttribute("src", imgSrc);
+            }
+
+
+        function long() {
+            let conWrap = document.querySelector(".inner_contents");
+            conWrap.style.height = "100%";
+
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li><img class="img1" src="https://cdn.pixabay.com/photo/2022/02/24/15/17/cat-7032641_960_720.jpg"></li>
+            <li><img class="img1" src="https://cdn.pixabay.com/photo/2022/03/18/19/09/blue-throat-7077261_960_720.jpg"></li>
+            <li><img class="img1" src="https://cdn.pixabay.com/photo/2022/03/25/17/54/sakura-7091532_960_720.jpg"></li>
+        </ul>
+        <div class="main_img">
+            <img  src="https://cdn.pixabay.com/photo/2022/03/18/19/09/blue-throat-7077261_960_720.jpg">
+        </div>
+    </div>
+
+    <div class="product">
+        <div class="inner_contents"><img src="https://thumbnail6.coupangcdn.com/thumbnails/remote/q89/image/retail/images/329395608727801-3550e03d-94d9-4bed-97ee-d2501cc68b98.jpg" alt=""></div>
+        <div class="inner_footer">
+            <button class="btn_more" onclick="long()">상품 더보기</button>
+            <button class="btn_close" onclick="long()">상품 더보기</button>
+        </div>
+    </div>
+</body>
+</html>

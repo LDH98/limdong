@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .popup {
+            position: relative;
+            display: none;
+            width: 100px; height: 100px;
+            margin: 0 auto;
+            border: 1px solid #000;
+        }
+        .open {
+            display: block;
+            color: red;
+        }
+        .close {
+            opacity: 0;
+            transition: all 1s;
+        }
+
+        #but {
+            position: absolute;
+            bottom: 0; right: 0;
+        }
+
+        .alert {
+            display: block;
+            position: absolute;
+            top: 100px;
+            width: 300px;
+            margin: 0 auto;
+            background-color: lemonchiffon;
+            border: 1px solid gold;
+            border-radius: 15px;
+        }
+
+        .alert > * {
+            display: inline-block;
+        }
+    </style>
+    <script>
+        // function pop() {
+        //     let text = document.querySelector(".txtbox");
+        //     text.style.display = "block";
+        // }
+
+        // function popclose() {
+        //     let text = document.querySelector(".txtbox");
+        //     text.style.display = "none";
+        // }
+
+        function dp(id) {
+            document.getElementById(id).style.display = sta;
+        }
+
+        function dp2(id) {
+            let pp = document.querySelector(id).classList.add("open"); // open 을 추가
+        }
+
+        function dp3(id) {
+            let pp = document.querySelector("#pop1").classList.add("close"); // open 을 추가
+        }
+
+        function dp2n(id) {
+            let pp = document.querySelector(id).classList.remove("open"); // open 을 뺌
+        }
+
+        function dp3n() {
+            let pp = document.querySelector("#pop1").classList.remove("open");
+        }
+
+
+
+        // setTimeout(dp2, 3000); // 3초 후에 실행
+        // setInterval(dp3n, 3000); // 3초 마다 실행
+
+        setTimeout(dp3, 3000);
+
+        // setTimeout(() => console.log("3초 후에 실행"), 3000);
+        // setInterval(() => console.log("3초 마다 실행"), 3000);
+    </script>
+</head>
+<body>
+    <div class="alert">
+        <p>작은 경고창입니다.</p>
+        <button class="close-btn" type="button"><span class="hidden">닫기</span></button>
+    </div>
+    <div id="pop1" class="popup">
+        팝업 입니다.
+        <button type="button" id="but" onclick="dp2n('#pop1', 'close')">팝업 닫음</button>
+    </div>
+    <button type="button" onclick="dp2('#pop1', 'open')">팝업 열림</button>
+
+    <div id="mt" class="apple banana orange watermelon"></div>
+</body>
+</html>

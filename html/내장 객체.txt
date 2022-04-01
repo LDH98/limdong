@@ -1,0 +1,6 @@
+내장 객체
+
+BOM
+- window.alert, window.location.href
+DOM
+- document.write

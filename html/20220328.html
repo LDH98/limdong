@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // let a = confirm(""); // true or false
+        // alert(a);
+        document.write(window.innerWidth + "<br>");
+        document.write(window.innerHeight + "<br>");
+        document.write(window.devicePixelRatio + "<br>");
+        
+        document.write(window.scrollY + "<br>");
+        document.write(window.scrollX + "<br>");
+
+
+        // location.href = 'https://www.naver.com/';
+    </script>
+</head>
+<body>
+    <div style="width: 1000px; height: 150vh;"></div>
+    <button type="button" onclick="history.back()">뒤로가기</button>
+    <button type="button" onclick="history.go(-2)">go</button>
+    <button type="button" onclick="history.forward()">앞으로가기</button>
+    <button type="button" onclick="window.open('https://www.naver.com/');">네이버</button>
+    <button type="button" onclick="window.scrollTo(0,0)">top</button>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const arrTxt = ["빨", "주", "노", "초", "파" ,"남", "보", "남"];
+        const arrNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+        let res;
+        res = arrTxt.indexOf("남"); // 처음 등장하는 인덱스 값
+        console.log(res);
+        
+        res = arrTxt.lastIndexOf("남"); // 마지막 인덱스 값
+        console.log(res);
+
+        res = arrTxt.indexOf("홍");
+        console.log(res);
+
+        res = arrNum.filter(nOdd); // 콜백함수를 사용해서, 조건에 맞는 새로운 함수를 생성
+        console.log(res);
+
+        function nOdd(value, index, array) {
+            return value % 2 != 0;
+        }
+
+        res = arrNum.filter(nEven); // 콜백함수를 사용해서, 조건에 맞는 새로운 함수를 생성
+        console.log(res);
+
+        function nEven(value, index, array) {
+            return value % 2 == 0;
+        }
+
+        res = arrTxt.every(findTxt); // 요소가 다 맞아야 참
+        console.log(res);
+
+        res = arrTxt.some(findTxt); // 요소 중 하나라도 있으면 참
+        console.log(res);
+
+        function findTxt(value, index, array) {
+            return value == "빨";
+        }
+
+        res = arrNum.findIndex(nEven); // 조건에 맞는 첫 인덱스 값을 가져옴
+        console.log(res);
+
+        res = arrNum.find(nOdd); // 조건에 맞는 첫 인덱스를 가져옴
+        console.log(res);
+
+        res = arrTxt.map(test);
+        function test(value, index, array) {
+            document.write(`${value}는 ${array}의 ${index+1}번째 요소입니다. <br>`);
+            return `${value}는 ${array}의 ${index+1}번째 요소입니다.`
+        }
+        console.log(res);
+
+        res = arrNum.map(testN);
+        function testN(value, index, array) {
+            return value * value;
+        }
+        console.log(res);
+
+        res = arrTxt.slice(2,5); // 2에서 5전까지 찾음
+        // document.write(res);
+
+        // res = arrTxt.fill("큭", 2,5); // 2에서 5전까지 바꿈
+        // // document.write(res);
+
+        arrTxt.splice(1, 0, "큭1", "큭2", "큭3"); // 기존 배열을 변형함, 삭제함, 추가함
+        // arrTxt.splice(1, 3, "큭1", "큭2", "큭3"); // 변형함
+        // arrTxt.splice(1, 0); // 삭제
+        document.write(arrTxt);
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

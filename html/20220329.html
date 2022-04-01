@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 일정시간이 흐르면 전체 배경이미지가 바뀌고
+        // 시간 글자 font-weight, size, family
+        // 화면 중앙 시간을 크게 표시
+        let day = new Date();
+
+        let dayY = day.getFullYear();
+        let dayM = day.getMonth();
+        dayM = dayM + 1;
+        let dayD = day.getDate();
+        let dayW = day.getDay();
+        let timeH = day.getHours();
+        let timeM = day.getMinutes();
+        let timeS = day.getSeconds();
+        switch(dayW) {
+            case 0:
+                dayW = "일요일";
+            break;
+            case 1:
+                dayW = "월요일";
+            break;
+            case 2:
+                dayW = "화요일";
+            break;
+            case 3:
+                dayW = "수요일";
+            break;
+            case 4:
+                dayW = "목요일";
+            break;
+            case 5:
+                dayW = "금요일";
+            break;
+            case 6:
+                dayW = "토요일";
+            break;
+        }
+
+
+        document.write(dayY + "-" + dayM + "-" + dayD + " " + dayW + " " + timeH + "시" + timeM + "분" + timeS + "초");
+        setInterval(timer, 1000);
+        function timer(){
+            if(timeS < 60){
+                timeS++;
+            } else if(timeS == 60) {
+                timeS = 0;
+                timeM += 1;
+            }
+            if(timeM == 60) {
+                timeM = 0;
+                timeH += 1;
+            }
+            document.getElementById("timer").innerHTML = timeH + " : " + timeM + " : " + timeS;
+        }
+        document.write("<hr>");
+    </script>
+</head>
+<body>
+    <p id="timer"></p>
+</body>
+</html>

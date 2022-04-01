@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let day = new Date();
+        let day2 = new Date("2022-01-01");
+        let dayGap = day - day2;
+        dayGap = dayGap / (24 * 60 * 60 * 1000);
+        dayGap = Math.floor(dayGap);
+        document.write(`오늘은 2022년 1월 1일의 ${dayGap}일이 지난 날입니다.`);
+
+        let day0 = prompt("시작 일을 입력하시오.", "YYYY-MM-DD");
+        let day1= prompt("종료 일을 입력하시오.", "YYYY-MM-DD");
+        let dayA = new Date(day0);
+        let dayB = new Date(day1);
+        let dayC = dayA - dayB;
+        dayC = dayC / (24 * 60 * 60 * 1000);
+        dayC = Math.floor(dayC);
+        let dayF;
+        if(dayC > 0) {
+            dayF = "후";
+        }else {
+            dayF = "전";
+            dayC = dayC + (-dayC*2);
+        }
+        document.write(`<hr> 시작 일로부터 ${dayC}일 ${dayF}입니다.`);
+
+        document.write("<hr>" + day + "<br>");
+        let dayY = day.getFullYear();
+        // document.write(dayY + "<br>");
+        let dayM = day.getMonth();
+        // document.write(dayM + 1 + "<br>");
+        let dayD = day.getDate();
+        // document.write(dayD + "<br>");
+        let dayS = day.getDay();
+
+        let timeH = day.getHours();
+        let timeM = day.getMinutes();
+        let timeS = day.getSeconds();
+
+        let txt;
+        if(timeH / 12 > 1) {
+            txt = "오후";
+        }else {
+            txt = "오전";
+        }
+
+        let week;
+        switch(dayS) {
+            case 0:
+                week = "일요일";
+            break;
+            case 1:
+                week = "월요일";
+            break;
+            case 2:
+                week = "화요일";
+            break;
+            case 3:
+                week = "수요일";
+            break;
+            case 4:
+                week = "목요일";
+            break;
+            case 5:
+                week = "금요일";
+            break;
+            case 6:
+                week = "토요일";
+            break;
+        }
+        document.write(day.toLocaleDateString());
+        document.write("<hr>")
+        document.write(`오늘은 ${dayY}년 ${dayM+1}월 ${dayD}일 ${week} 입니다.<hr>`);
+        document.write(`지금은 ${txt} ${timeH%12}시 ${timeM+1}분 ${timeS}초 입니다.`);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
