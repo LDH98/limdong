@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            margin: 0 auto;
+            /* overflow: hidden; */
+            outline: 10px solid #000;
+        }
+
+        .wrap {
+            /* display: flex; */
+            position: absolute;
+            width: 400px;
+            height: 300px;
+            top: 0;
+            left: 0;
+            /* transition: all 1s; */
+        }
+
+        .slide {
+            flex-shrink: 0;
+            flex-grow: 0;
+            width: 400px;
+            height: 300px;
+            top: 0;
+        }
+
+        .slide:nth-child(1) { background-color: red; }
+        .slide:nth-child(2) { background-color: green; }
+        .slide:nth-child(3) { background-color: blue; }
+
+        .btn {
+            position: absolute;
+            width: 100%; height: 100%;
+        } 
+
+        .btn > button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .btn_prev {
+            left: 0;
+        }
+
+        .btn_next {
+            right: 0;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            let boxWrap = document.querySelector('.wrap');
+            let btnPrev = document.querySelector('.btn_prev');
+            let btnNext = document.querySelector('.btn_next');
+
+            let slide = document.querySelectorAll('.slide');
+
+            btnPrev.onclick = function() {
+
+                // if(boxWrap.offsetTop < 0) {
+                    boxWrap.style.top = boxWrap.offsetTop + slide[0].offsetHeight + "px";
+                // }
+            }
+            
+            btnNext.onclick = function() {
+                // // boxWrap.style.top = '-300px';
+                //     // btnNext.style.display = 'none';
+                // if(boxWrap.offsetTop > (boxWrap.offsetHeight - slide[0].offsetHeight) * -1){
+                //     boxWrap.style.top = boxWrap.offsetTop - slide[0].offsetHeight + "px";
+                // }
+                if(boxWrap.offsetTop >= (boxWrap.offsetHeight - slide[0].offsetHeight) * -1){
+                    boxWrap.style.top = boxWrap.offsetTop - slide[0].offsetHeight + "px";
+                }
+            }
+        }
+        </script>
+</head>
+<body>
+    <div class="container">
+        <div class="wrap">
+            <div class="slide">slide1</div>
+            <div class="slide">slide2</div>
+            <div class="slide">slide3</div>
+        </div>
+        <div class="btn">
+            <button class="btn_prev">이전</button>
+            <button class="btn_next">다음</button>
+        </div>
+    </div>
+</body>
+</html>

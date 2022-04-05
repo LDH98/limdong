@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            let img = document.getElementById('img');
+            // img.onclick = function() {
+            //     alert('click');
+            // }
+            // img.onmouseenter = function() {
+            //     alert('mouse enter');
+            // }
+
+            // img.onmousedown = function() {
+            //     alert('mouse down');
+            // }
+
+            // img.onmouseleave = function() {
+            //     alert('mouse leave');
+            // }
+
+            // img.onmousemove = function() {
+            //     alert('mouse move');
+            // }
+
+            // img.onmouseout = function() {
+            //     alert('mouse out');
+            // }
+
+            // img.onmouseover = function() {
+            //     alert('mouse over');
+            // }
+
+            img.onmouseup = function() {
+                alert('mouse up');
+            }
+        }
+        window.onkeydown = function(event) {
+            // alert('key down');
+            // alert(event.key);
+            // alert(event.code);
+        }
+        window.onkeyup = function(event) {
+            // alert('key down');
+            // alert(event.key);
+            // alert(event.code);
+        }
+        window.onkeypress = function(event) {
+            // alert('key down');
+            alert(event.key);
+            alert(event.code);
+        }
+    </script>
+</head>
+<body>
+    <img id='img' src="https://cdn.pixabay.com/photo/2022/03/30/19/19/mountain-7101737_960_720.jpg">
+</body>
+</html>
