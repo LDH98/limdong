@@ -19,7 +19,6 @@
             /* display: flex; */
             position: absolute;
             width: 400px;
-            height: 300px;
             top: 0;
             left: 0;
             /* transition: all 1s; */
@@ -61,27 +60,41 @@
             let boxWrap = document.querySelector('.wrap');
             let btnPrev = document.querySelector('.btn_prev');
             let btnNext = document.querySelector('.btn_next');
-
             let slide = document.querySelectorAll('.slide');
-
             btnPrev.onclick = function() {
-
-                // if(boxWrap.offsetTop < 0) {
+                if(boxWrap.offsetTop < 0) {
                     boxWrap.style.top = boxWrap.offsetTop + slide[0].offsetHeight + "px";
-                // }
+                }
             }
-            
-            btnNext.onclick = function() {
-                // // boxWrap.style.top = '-300px';
-                //     // btnNext.style.display = 'none';
-                // if(boxWrap.offsetTop > (boxWrap.offsetHeight - slide[0].offsetHeight) * -1){
-                //     boxWrap.style.top = boxWrap.offsetTop - slide[0].offsetHeight + "px";
-                // }
-                if(boxWrap.offsetTop >= (boxWrap.offsetHeight - slide[0].offsetHeight) * -1){
+            function sdUp() {
+                if(event.code == "ArrowUp"){
+                if(boxWrap.offsetTop < 0) {
+                    boxWrap.style.top = boxWrap.offsetTop + slide[0].offsetHeight + "px";
+                    }
+                }
+            }
+            function sdDown() {
+                if(event.code == "ArrowDown"){
+                if(boxWrap.offsetTop > (boxWrap.offsetHeight - slide[0].offsetHeight) * -1){
                     boxWrap.style.top = boxWrap.offsetTop - slide[0].offsetHeight + "px";
                 }
             }
-        }
+            }
+            function sdNext() {
+                if(boxWrap.offsetTop > (boxWrap.offsetHeight - slide[0].offsetHeight) * -1){
+                    boxWrap.style.top = boxWrap.offsetTop - slide[0].offsetHeight + "px";
+                }
+            }
+            btnNext.addEventListener('click', sdNext, {once: true} );
+            window.addEventListener('keyup', sdUp);
+            window.addEventListener('keyup', sdDown, {once: false});
+            // btnNext.onclick = function a() {
+            //     if(boxWrap.offsetTop > (boxWrap.offsetHeight - slide[0].offsetHeight) * -1){
+            //         boxWrap.style.top = boxWrap.offsetTop - slide[0].offsetHeight + "px";
+            //     }
+            // }
+            
+            }
         </script>
 </head>
 <body>
