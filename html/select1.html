@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function chg(e) {
+            let sel1 = ['용산구', '강남구', '강북구', '도봉구', '구로구', '서초구']
+            let sel2 = ['서구', '중구', '남동구', '부평구']
+            let sel3 = ['사하구', '강서구', '부산진구', '해운대구', '서구', '중구', '남구']
+
+            if(e.value == '서울') sel = sel1
+            if(e.value == '인천') sel = sel2
+            if(e.value == '부산') sel = sel3
+
+            document.querySelector('#dep2').length = 0;
+            for(i=0; i < sel.length; i++) {
+                let opt = document.createElement('option');
+                document.querySelector('#dep2').appendChild(opt);
+                opt.value = sel[i];
+                console.log(opt.value);
+                console.log(opt);
+                opt.innerHTML = sel[i];
+            }
+        }
+    </script>
+</head>
+<body>
+    <select onchange="chg(this)">
+        <option value="서울">서울특별시</option>
+        <option value="인천">인천광역시</option>
+        <option value="부산">부산광역시</option>
+        <!-- <option value="1">붉은과일</option>
+        <option value="2">노란과일</option>
+        <option value="3">하얀과일</option> -->
+    </select>
+
+    <select id="dep2">
+    </select>
+</body>
+</html>
