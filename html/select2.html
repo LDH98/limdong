@@ -9,7 +9,7 @@
         window.onload = function(){
             const date = new Date();
             date.getFullYear();
-            console.log(date.getDate());
+
             for(i = 1; i <= 12; i++) {
             let opt = document.createElement('option');
             opt.value = i;
@@ -24,30 +24,32 @@
             document.querySelector('#dep1').appendChild(opt);
             }
 
-            for(i = 1; i <= 31; i++) {
-            let opt = document.createElement('option');
-            opt.value = i;
-            opt.innerHTML = i;
-            document.querySelector('#dep3').appendChild(opt);
+            // let day = new date(2022, 4, 0);
+            document.querySelector('#dep2').addEventListener('change', creD);
+            function creD() {
+                document.querySelector('#dep3').length = 0;
+                let getM = new Date(dep1.value, dep2.value, 0)
+                let lstDay = getM.getDate();
+            for(i = 1; i <= lstDay; i++) {
+                let opt = document.createElement('option');
+                opt.value = i;
+                opt.innerHTML = i;
+                document.querySelector('#dep3').appendChild(opt);
             }
-
-            function dep3(e) {
-                let day = new Date(2022, 4, 0);
-            console.log(day.getDate());
             }
         }
     </script>
 </head>
 <body>
-    <select id="dep1" onchange="dep1(this)">
+    <select id="dep1">
         <option value=""></option>
     </select>년
 
-    <select id="dep2" onchange="dep2(this)">
+    <select id="dep2">
         <option value=""></option>
     </select>월
 
-    <select id="dep3" onchange="dep3(this)">
+    <select id="dep3">
         <option value=""></option>
     </select>일
 </body>

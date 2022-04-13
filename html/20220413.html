@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cal {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-gap: 5px;
+        }
+        
+        .date {
+            text-align: center;
+        }
+
+        .day {
+            padding: 10px;
+            background-color: #eee;
+        }
+
+        .blank {
+            background-color: #f8f8f8;
+        }
+
+        .today {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+        var date = new Date();
+        var dateY = date.getFullYear();
+        var dateM = date.getMonth();
+        var dateD = date.getDate();
+
+        document.querySelector('.btn-next').addEventListener('click', ntxM);
+        document.querySelector('.btn-prev').addEventListener('click', prvM);
+        function prvM() {
+            dateM -= 1;
+            if(dateM < 1) {
+                dateY = dateY - 1;
+                dateM = 11;
+            }
+            document.querySelector('#date').innerHTML = `${dateY}년 ${dateM+1}월`;
+            renderCal();
+        }
+        function ntxM() {
+            dateM += 1;
+            if(dateM >= 12) {
+                dateY = dateY + 1;
+                dateM = 0;
+            }
+            document.querySelector('#date').innerHTML = `${dateY}년 ${dateM+1}월`;
+            renderCal();
+        }
+        
+        let cal = document.querySelector('#cal');
+        function renderCal() {
+        var cdate = new Date();
+        var cdateY = date.getFullYear();
+        var cdateM = date.getMonth();
+        var cdateD = date.getDate();
+        var lastD = new Date(dateY, dateM+1, 0).getDate();
+        var firstD = new Date(dateY, dateM, 1).getDay();
+        document.querySelector('#date').innerHTML = `${dateY}년 ${dateM+1}월`;
+            cal.innerHTML = '';
+            for(i = 1; i <= lastD; i++) {
+            let dv = document.createElement('div');
+            dv.innerHTML = i;
+            dv.classList.add('day');
+            if(i == dateD) {
+                dv.classList.add('today');
+            }
+            cal.append(dv);
+        }
+        for(i = 1; i < firstD; i++) {
+            let dv = document.createElement('div');
+            dv.classList.add('blank');
+            cal.prepend(dv);
+        }
+        
+        }
+        renderCal();
+        }
+    </script>
+</head>
+<body>
+    <div id="current">
+        <button class="btn-prev"><</button>
+        <span id="date"></span>
+        <button class="btn-next">></button>
+    </div>
+    <div id="cal"></div>
+</body>
+</html>
