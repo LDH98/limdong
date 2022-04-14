@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+    <script>
+        window.onload = function() {
+            let ckall = document.querySelector('#ckall');
+            let ckbox = document.getElementsByName('ck');
+
+            ckall.addEventListener('click', checkAll);
+
+            function checkAll() {
+                // for(i = 0; i < ckbox.length; i++) {
+                //     if(ckbox[i].checked == true) {
+                //         ckbox[i].checked = false;
+                //     } else {
+                //         ckbox[i].checked = true;
+                //     }
+                // }
+
+                if(ckall.checked == true) {
+                    for(i = 0; i < ckbox.length; i++){
+                        ckbox[i].checked = true;
+                    }
+                }else {
+                    for(i = 0; i < ckbox.length; i++){
+                        ckbox[i].checked = false;
+                    }
+                }
+
+                for(i = 0; i < ckbox.length; i++) {
+                    ckbox[i].onclick = function() {
+                        ckall.checked = false;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <p>
+            <input type="checkbox" id="ckall"> <label for="ckall">전체선택</label>
+        </p>
+
+        <input type="checkbox" name="ck" id="ck1"> <label for="ck1">체크1</label>
+        <input type="checkbox" name="ck" id="ck2"> <label for="ck2">체크2</label>
+        <input type="checkbox" name="ck" id="ck3"> <label for="ck3">체크3</label>
+        <input type="checkbox" name="ck" id="ck4"> <label for="ck4">체크4</label>
+    </form>
+</body>
+</html>

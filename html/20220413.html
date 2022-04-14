@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #cal {
+        #cal, .week {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             grid-gap: 5px;
         }
         
-        .date {
+        #current {
             text-align: center;
         }
 
@@ -29,6 +29,18 @@
             background-color: #333;
             color: #fff;
         }
+
+        button {
+            cursor: pointer;
+            background: #fff;
+            border: none;
+            outline: none;
+        }
+
+        button:focus {
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
     </style>
     <script>
         window.onload = function() {
@@ -36,6 +48,7 @@
         var dateY = date.getFullYear();
         var dateM = date.getMonth();
         var dateD = date.getDate();
+        var tMh = date.getMonth();
 
         document.querySelector('.btn-next').addEventListener('click', ntxM);
         document.querySelector('.btn-prev').addEventListener('click', prvM);
@@ -50,7 +63,7 @@
         }
         function ntxM() {
             dateM += 1;
-            if(dateM >= 12) {
+            if(dateM > 11) {
                 dateY = dateY + 1;
                 dateM = 0;
             }
@@ -66,13 +79,15 @@
         var cdateD = date.getDate();
         var lastD = new Date(dateY, dateM+1, 0).getDate();
         var firstD = new Date(dateY, dateM, 1).getDay();
+        console.log(lastD);
+        console.log(firstD);
         document.querySelector('#date').innerHTML = `${dateY}년 ${dateM+1}월`;
             cal.innerHTML = '';
             for(i = 1; i <= lastD; i++) {
             let dv = document.createElement('div');
             dv.innerHTML = i;
             dv.classList.add('day');
-            if(i == dateD) {
+            if(i == dateD && dateM == date.getMonth() && dateY == date.getFullYear()) {
                 dv.classList.add('today');
             }
             cal.append(dv);
@@ -82,6 +97,28 @@
             dv.classList.add('blank');
             cal.prepend(dv);
         }
+
+        let week = ['일', '월', '화', '수', '목', '금', '토'];
+        console.log(week.length);
+        for(i = week.length-1; i >= 0; i--) {
+            let dv = document.createElement('div');
+            dv.innerHTML = week[i];
+            dv.classList.add('week');
+            cal.prepend(dv);
+        }
+        // let wk = document.createElement('div');
+        // for(i = 0; i < week.length; i++) {
+        //     let dv = document.createElement('div');
+        //     dv.innerHTML = week[i];
+        //     wk.classList.add('week');
+        //     wk.append(dv);
+        //     cal.before(wk);
+        // }
+        // for(i = 1; i < firstDd; i++) {
+        //     let dv = document.createElement('div');
+        //     dv.classList.add('blank');
+        //     cal.append(dv);
+        // }
         
         }
         renderCal();
