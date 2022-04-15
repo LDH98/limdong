@@ -32,14 +32,19 @@
                         ckbox[i].checked = false;
                     }
                 }
-
+            }
                 for(i = 0; i < ckbox.length; i++) {
-                    ckbox[i].onclick = function() {
+                        ckbox[i].addEventListener('click', allCheck);
+                    }
+                function allCheck() {
+                    let checked = document.querySelectorAll('input[name="ck"]:checked');
+                    if(checked.length == ckbox.length) {
+                        ckall.checked = true;
+                    }else {
                         ckall.checked = false;
                     }
                 }
             }
-        }
     </script>
 </head>
 <body>

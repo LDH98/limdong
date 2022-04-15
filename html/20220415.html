@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            width: 100%; height: 10em;
+        }
+        .cnt {
+            text-align: right;
+        }
+
+        .error {
+            border: 1px solid red;
+            background-color: rgb(121, 121, 121);
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            const txt = document.getElementById('writer');
+            const numTotal = 20;
+            document.querySelector('.tcnt').innerHTML = numTotal;
+            txt.addEventListener('input', ckTxt);
+
+            function ckTxt() {
+                let num = this.value;
+                let numCnt = num.length 
+                document.querySelector('.ncnt').innerHTML = numCnt;
+                if(numCnt > numTotal) {
+                    // window.close();
+                    txt.setAttribute('class', 'error');
+                    document.querySelector('.ncnt').classList.add('error');
+                }else {
+                    txt.classList.remove('error');
+                    document.querySelector('.ncnt').classList.remove('error');
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <textarea id="writer"></textarea>
+    <p class="cnt">
+        <span class="ncnt">0</span>/
+        <span class="tcnt"></span>
+    </p>
+</body>
+</html>
