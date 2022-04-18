@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .modal {
+            position: absolute;
+            display: flex;
+            justify-content: center; align-items: center;
+            width: 100%; height: 100vh;
+            backdrop-filter: blur(2px);
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        .content {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            width: 250px; height: 120px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+        .text1 {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-weight: 700;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .xbtn {
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .text2 {
+            width: 100%;
+            padding: 10px;
+        }
+        .btn {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .cnlth {
+            cursor: pointer;
+            width: 50%;
+            border: none;
+            border-bottom-left-radius: 10px;
+        }
+        .ghkrdls {
+            cursor: pointer;
+            width: 50%;
+            border: none;
+            background-color: rgb(104, 152, 255);
+            border-bottom-right-radius: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            let modal = document.querySelector('.modal');
+            // modal.addEventListener('click', modaloff);
+            let btnOn = document.querySelector('.btn-open');
+            btnOn.addEventListener('click', modalOn);
+            let btnClose = document.querySelector('.xbtn');
+            btnClose.addEventListener('click', modaloff);
+
+            window.addEventListener('keydown', (e) => {
+                if(e.keyCode == '27'){
+                    modaloff();
+                }
+                }
+            );
+
+            function modalOn() {
+                modal.style.display = 'flex';
+            }
+            function modaloff() {
+                modal.style.display = 'none';
+            }
+            let ghkrdls = document.querySelector('ghkrdls');
+        }
+    </script>
+</head>
+<body>
+    <div class="modal">
+    <div class="content">
+        <div class="text1">
+            <p class="ekerl">Model</p>
+            <button class="xbtn">X</button>
+        </div>
+        <div class="text2">냉무</div>
+        <div class="btn">
+            <button class="cnlth">취소</button>
+            <button class="ghkrdls">확인</button>
+        </div>
+    </div>
+    </div>
+    <button type="button" class="btn-open">open</button>
+    asdasdasdsd<br>
+    asdasdasdsd<br>
+    asdasdasdsd<br>
+    asdasdasdsd<br>
+    asdasdasdsd<br>
+    asdasdasdsd<br>
+</body>
+</html>
