@@ -11,15 +11,27 @@
             margin: 0;
             padding: 0;
         }
+        .fade {
+            
+        }
         .modal {
+            width: 0; height: 0;
+            overflow: hidden;
+        }
+        .modal.active {
             position: absolute;
             display: flex;
             justify-content: center; align-items: center;
             width: 100%; height: 100vh;
             backdrop-filter: blur(2px);
             background-color: rgba(0, 0, 0, 0.2);
+            animation: fade-in 1s forwards;
+        }
+        .modal:not(.active) {
+            animation: fade-out 1s forwards;
         }
         .content {
+            /* position: absolute; */
             background-color: #fff;
             display: flex;
             flex-direction: column;
@@ -58,10 +70,27 @@
         }
         .ghkrdls {
             cursor: pointer;
+            scrollbar-gutter: ;
             width: 50%;
             border: none;
             background-color: rgb(104, 152, 255);
             border-bottom-right-radius: 10px;
+        }
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes fade-out {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
         }
     </style>
     <script>
@@ -73,7 +102,15 @@
             let btnClose = document.querySelector('.xbtn');
             btnClose.addEventListener('click', modaloff);
 
+            modal.addEventListener('click', (e) => {
+                console.log(e.target);
+                if(e.target.classList.contains('active')) {
+                    modaloff();
+                }
+            });
             window.addEventListener('keydown', (e) => {
+                // console.log(e.keyCode);
+                // console.log(e.key);
                 if(e.keyCode == '27'){
                     modaloff();
                 }
@@ -81,10 +118,16 @@
             );
 
             function modalOn() {
-                modal.style.display = 'flex';
+                modal.classList.add('active');
+                modal.classList.remove('fade');
+                document.body.style.overflow = 'hidden';
+                // modal.style.display = 'flex';
             }
             function modaloff() {
-                modal.style.display = 'none';
+                modal.classList.remove('active');
+                modal.classList.add('fade');
+                document.body.style.overflow = 'auto';
+                // modal.style.display = 'none';
             }
             let ghkrdls = document.querySelector('ghkrdls');
         }
