@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .rect {
+            width: 300px; height: 300px;
+            background-color: antiquewhite;
+            margin: 10px auto;
+            opacity: 0;
+        }
+        .rotate.show {
+            animation: rotate 1s;
+        }
+        .fade-up.show {
+            animation: fade-up 1s;
+        }
+        .show {
+            animation: fade 1s;
+            opacity: 1;
+        }
+        @keyframes fade {
+            from {
+                background-color: red;
+            }
+            to {
+                background-color: blue;
+            }
+        }
+        @keyframes rotate {
+            from {
+                opacity: 0;
+                transform: rotate(0);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes fade-up {
+            from {
+                transform: translateY(-100px);
+            }
+            to {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            const obj = document.querySelectorAll('.rect');
+            console.log(obj);
+
+            function eff() {
+                for(const el of obj) {
+                    el.innerHTML = el.offsetTop;
+                    if(window.innerHeight > el.getBoundingClientRect().top + el.offsetHeight) {
+                        // console.log(el.offsetHeight);
+                        console.log(el.getBoundingClientRect().top);
+                        // console.log(window.innerHeight);
+                        el.classList.add('show');
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', eff);
+            // for(el = 0; el < obj.length; el++)
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="rect rotate">rect01</div>
+        <div class="rect fade-up">rect02</div>
+        <div class="rect">rect03</div>
+        <div class="rect">rect04</div>
+        <div class="rect">rect05</div>
+        <div class="rect">rect06</div>
+        <div class="rect">rect07</div>
+        <div class="rect">rect08</div>
+        <div class="rect">rect09</div>
+        <div class="rect">rect10</div>
+    </div>
+</body>
+</html>
