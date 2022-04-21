@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .active {
+            position: absolute;
+            font-size: 3em;
+            color: red;
+            overflow: hidden;
+            /* width: 100px; height: 1em; */
+            white-space: nowrap;
+            /* animation: zjffj 1s; */
+        }
+/* 
+        @keyframes zjffj {
+            from {
+                background-color: yellow;
+            }
+            to {
+                background-color: salmon;
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div id="rect">Rect</div>
+    <script>
+        // document.querySelector('#rect').inner
+        // d3.select('#rect').attr('style', 'font-size: 3em')
+        const obj = d3.select('#rect')
+        obj.attr('class', 'active');
+        obj.attr('style', 'background: blue');
+
+        obj.text('zzzzz').html('<strong>ㅎㅎㅎ</strong>');
+        d3.select('.active').text('d3 시작');
+        d3.select('body').style('background', 'green');
+
+        obj.append('div');
+        // obj.insert('p');
+        // obj.remove();
+
+        // obj.transition().duration(2000).delay(1500).style('background', 'yellow');
+        obj.transition().duration(2000).style('width', '1000px');
+        obj.style('width', '200px');
+    </script>
+</body>
+</html>
