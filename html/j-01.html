@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- cdnjs jquery 검색 -->
+
+    <style>
+        .active {
+            font-size: 20px;
+        }
+
+        .tab_con > div {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap1">
+        <div class="wrap2">
+            <div class="wrap3">
+                <ul class="obj">
+                    <li>목록1</li>
+                    <li class="target">목록2</li>
+                    <li>목록3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tab_btn">
+        <button type="button" data-target="tab_con1">탭1</button>
+        <button type="button" data-target="tab_con2">탭2</button>
+        <button type="button" data-target="tab_con3">탭3</button>
+    </div>
+    <div class="tab_con">
+        <div class="tab_con1">탭1</div>
+        <div class="tab_con2">탭2</div>
+        <div class="tab_con3">탭3</div>
+    </div>
+    <script>
+        // document.querySelector('.obj') ==
+        $('.obj li:nth-child(2)').css('color', 'red'); // 1부터 시작
+        $('.obj li:eq(2)').css('color', 'blue'); // 0부터 시작
+        $('.obj li:lt(2)').css('color', 'green');
+        $('.obj li:gt(1)').css('color', 'orange');
+        $('li').parent().css('border', '1px solid red');
+        $('li').closest('.wrap2').css('border', '2px dotted green');
+
+        $('li:eq(2)').text('변경목록');
+        $('li:eq(2)').html('<strong>하하</strong>');
+        $('li:eq(2)').append('<li>목록4</li>');
+        $('li:eq(2)').prepend('<li>목록</li>');
+        $('li:eq(2)').before('<li>목록앞</li>');
+        $('li:eq(2)').after('<li>목록뒤</li>');
+
+        // $('.target').appendTo('.wrap1'); //wrap1 뒤에 타겟 이동
+        $('.target').prependTo('.wrap1'); //wrap1 앞에 타겟 이동
+
+        // $('.target').remove() 삭제;
+
+        $('.target').css('marginTop', '50px');
+        $('.target').addClass('on');
+        $('.target').removeClass('on');
+        // $('.on').css('display', 'none');
+        $('.target').attr('title', 'target 객체 입니다.');
+        $('.target').removeAttr();
+
+        $('.target').click(function() {
+            console.log('클릭했음');
+            $('.target').css('background', 'red');
+        });
+
+        $('.obj li').mouseover(function() {
+            // console.log(this);
+            $(this).addClass('active');
+            $('.obj li').mouseout(function() {
+                $(this).removeClass('active');
+            })
+        });
+
+        // $('.tab_con > div').css('display', 'none');
+        $('.tab_con > div').hide();
+        $('.tab_btn > button').click(function() {
+            let tg = $(this).attr('data-target');
+            // $("."+tg).css('display', 'block');
+
+            $('.tab_con > div').hide();
+            $("."+tg).show();
+        })
+
+        window.addEventListener('keydown', (e) => { 
+                // console.log(e.keyCode);
+                // console.log(e.key);
+        })
+    </script>
+</body>
+</html>
