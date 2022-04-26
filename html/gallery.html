@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .thum-list {
+            display: grid;
+        }
+
+        .thum-list > li {
+            width: 100px; 
+            height: 100px;
+        }
+
+        .thum-list > li > img {
+            width: 100%; height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="thum-list">
+            <li><img src="https://cdn.pixabay.com/photo/2022/04/22/20/13/montmartre-7150549__340.jpg"></li>
+            <li><img src="https://cdn.pixabay.com/photo/2022/04/06/20/29/airplane-7116299__340.jpg"></li>
+            <li><img src="https://cdn.pixabay.com/photo/2021/11/22/04/21/drink-6815800__340.jpg"></li>
+            <li><img src="https://cdn.pixabay.com/photo/2022/04/21/19/47/lion-7148207__340.jpg"></li>
+            <li><img src="https://cdn.pixabay.com/photo/2022/04/24/15/38/bird-7153858__340.jpg"></li>
+        </ul>
+        <div class="big-thum"></div>
+    </div>
+    <script>
+        $('.thum-list > li > img').click(function() {
+            // $('.big-thum').append().html($(this).html());
+            $('.big-thum').html('<img>').attr('src', $(this));
+        })
+    </script>
+</body>
+</html>
