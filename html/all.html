@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="ckall">
+        <input type="checkbox" name="ckgall" id="all">
+        <label for="all">전체</label>
+    </p>
+    <p class="ckbox">
+        <input type="checkbox" name="ckgroup" id="ck01">
+        <label for="ck01">체크1</label>
+    </p>
+    <p class="ckbox">
+        <input type="checkbox" name="ckgroup" id="ck02">
+        <label for="ck02">체크2</label>
+    </p>
+    <p class="ckbox">
+        <input type="checkbox" name="ckgroup" id="ck03">
+        <label for="ck03">체크3</label>
+    </p>
+    <p class="ckbox">
+        <input type="checkbox" name="ckgroup" id="ck04">
+        <label for="ck04">체크4</label>
+    </p>
+    <p class="ckbox">
+        <input type="checkbox" name="ckgroup" id="ck05">
+        <label for="ck05">체크5</label>
+    </p>
+    <script>
+        $('input[name=ckgroup]').click(function() {
+            let total = $('input[name=ckgroup]').length;
+            let checked = $('input[name=ckgroup]:checked').length;
+
+            if(toral != checked) $('#ckall').prop('checked, false');
+            else $('#ckall').prop('checked', true);
+        });
+        $('#ckall').click(function() {
+            $('input[name=ckgroup]').prop('checked', true);
+        })
+    </script>
+</body>
+</html>
