@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         * {
             margin: 0; padding: 0;
@@ -13,36 +14,77 @@
             text-decoration: none;
         }
 
+        .container {
+            display: flex;
+        }
+
         .thum-list {
-            display: grid;
+            /* display: flex; */
+        }
+
+        .list-wrap {
+            height: 400px; 
+            overflow: hidden;
         }
 
         .thum-list > li {
             width: 100px; 
             height: 100px;
+            /* transform: translate(); */
         }
 
         .thum-list > li > img {
             width: 100%; height: 100%;
         }
+
+        .on {
+            border: 1px solid red;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <ul class="thum-list">
-            <li><img src="https://cdn.pixabay.com/photo/2022/04/22/20/13/montmartre-7150549__340.jpg"></li>
-            <li><img src="https://cdn.pixabay.com/photo/2022/04/06/20/29/airplane-7116299__340.jpg"></li>
-            <li><img src="https://cdn.pixabay.com/photo/2021/11/22/04/21/drink-6815800__340.jpg"></li>
-            <li><img src="https://cdn.pixabay.com/photo/2022/04/21/19/47/lion-7148207__340.jpg"></li>
-            <li><img src="https://cdn.pixabay.com/photo/2022/04/24/15/38/bird-7153858__340.jpg"></li>
-        </ul>
+        <div class="list-wrap">
+            <ul class="thum-list">
+                <li><img src="https://cdn.pixabay.com/photo/2022/04/22/20/13/montmartre-7150549__340.jpg"></li>
+                <li><img src="https://cdn.pixabay.com/photo/2022/04/06/20/29/airplane-7116299__340.jpg"></li>
+                <li><img src="https://cdn.pixabay.com/photo/2021/11/22/04/21/drink-6815800__340.jpg"></li>
+                <li><img src="https://cdn.pixabay.com/photo/2022/04/21/19/47/lion-7148207__340.jpg"></li>
+                <li><img src="https://cdn.pixabay.com/photo/2022/04/24/15/38/bird-7153858__340.jpg"></li>
+            </ul>
+        </div>
         <div class="big-thum"></div>
     </div>
+    <button type="button" class="prev">이전</button>
+    <button type="button" class="next">다음</button>
     <script>
-        $('.thum-list > li > img').click(function() {
+        $('.thum-list > li').mouseover(function() {
             // $('.big-thum').append().html($(this).html());
-            $('.big-thum').html('<img>').attr('src', $(this));
+            $('.big-thum').html('<img>')
+            $('.big-thum').children().attr('src', $(this).children().attr('src'));
+            // $('.thum-list > li').removeClass('on');
+            $(this).siblings().removeClass('on');
+            $(this).addClass('on');
         })
+
+        $('.prev').click(function() {
+            // $('.thum-list').hide('slow');
+            let posY = parseInt($('.thum-list').css('margin-top'))
+            $('.thum-list').animate({marginTop: posY - 100}, 'slow');
+            $('.thum-list > li').last().insertBefore($('.thum-list > li').first());
+        })
+        $('.next').click(function() {
+            // $('.thum-list').show('slow');
+            let posY = parseInt($('.thum-list').css('margin-top'))
+            $('.thum-list').animate({marginTop: posY + 100}, 'slow');
+            $('.thum-list > li').first().insertAfter($('.thum-list > li').last());
+        })
+
+        // 1<li>2<img>3</li>4
+        // 1 before           insertBefor('어디')
+        // 2 prepend 자식요소         prependTo()
+        // 3 append 자식요소          appendTo()
+        // 4 after                   insertAfter()
     </script>
 </body>
 </html>
