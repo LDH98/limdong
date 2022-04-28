@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+        <svg width="500" height="500"></svg>
+    <script>
+        const yScale = d3.scaleLinear()
+                        .domain([50, 0]) // 0 ~ 50
+                        .range([490, 10])
+                        
+        const xScale = d3.scaleTime()
+                        .domain([new Date('2022-04-23'), new Date('2022-04-28')])
+                        .range([10, 490])
+                        // obj { key: value, key2: value2 ...}
+                        // obj[key]
+        const svg = d3.select('svg');
+        const data = [5, 10, 15, 50, 25, 30, 35];
+            svg.selectAll('cir')
+            .data(data)
+            .enter()
+            .append('circle')
+            .attr('r', 10)
+            .attr('cx', (d, i) => { return 50 * i })
+            .attr('cy', d => yScale(d) )
+            
+            .on('mouseover', function() {
+                d3.select(this).transition().attr('r', 20)
+            })
+            .on('mouseout', function() {
+                d3.select(this).transition().attr('r', 10)
+            })
+
+            const path = d3.line()
+                            .x((d, i) => { return 50 * i })
+                            .y(d => yScale(d))
+            svg.selectAll('line')
+            .data(data)
+            .enter()
+            .append('path')
+            .attr('d', path(data))
+            .attr('fill', 'none')
+            .attr('stroke', 'green')
+            .attr('stroke-width', '2')
+
+            const xAxis = d3.axisBottom(xScale).tickSize(10).ticks(6);
+            const yAxis = d3.axisRight(yScale).tickSize(10).ticks(6);
+
+            svg.append('g').attr('transform', 'translate(0, 490)').call(xAxis);
+            svg.append('g').call(yAxis);
+    </script>
+</body>
+</html>

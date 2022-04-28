@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <svg width="'500" height="'500"></svg>
+    <script>
+        const svg = d3.select('svg');
+        const data = [5, 10, 15, 20, 25, 30, 35];
+        const color = ['red', 'yellow', 'green', 'orange', 'blue'];
+            svg.selectAll('bar')
+            .data(data)
+            .enter()
+            .append('rect')
+            .attr('height', (d, i) => { return d })
+            .attr('width', 40)
+            .attr('x', (d, i) => { return 50 * i })
+            .attr('y', (d, i) => { return 100 - data[i] })
+            .attr('fill', (d, i) => { return color[i] })
+    </script>
+</body>
+</html>
