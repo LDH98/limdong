@@ -4,3 +4,28 @@ BOM
 - window.alert, window.location.href
 DOM
 - document.write
+
+npm -v
+
+npm -i
+
+npm i node-sass
+
+컨트롤 + ,
+
+sass 검색
+
+live sass 편집
+
+,후
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "~/../css"
+        }
+    ]
+
+
+sass 폴더 만든 후
+test.scss 만들기

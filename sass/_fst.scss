@@ -1,0 +1,41 @@
+// header {
+//     padding: 10px;
+//     background-color: red;
+// }
+// footer {
+//     background-color: blue;
+// }
+// nav {
+//     border-bottom: 1px solid #000;
+//     ul {
+//         list-style: none;
+//         li {
+//             margin: 0; padding: 0;
+//             a {
+//                 text-decoration: none;
+//                 color: #fff;
+//             }
+//         }
+//     }
+// }
+.navi {
+    &_wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    background-color: #eee;
+    &_list {
+        display: flex;
+        margin: 0; padding: 0;
+        &_item {
+            list-style: none;
+            &_link {
+                list-style: none;
+                &_text {
+                    color: #000;
+                }
+            }
+        }
+    }
+}
+}

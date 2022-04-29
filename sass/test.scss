@@ -1,0 +1,19 @@
+header {
+    padding: 10px;
+    background-color: red;
+}
+footer {
+    background-color: blue;
+}
+nav {
+    border-bottom: 1px solid #000;
+    ul {
+        list-style: none;
+        li {
+            margin: 0; padding: 0;
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
