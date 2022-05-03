@@ -12,8 +12,102 @@ nav {
         li {
             margin: 0; padding: 0;
             a {
-                text-decoration: none;
+                @at-root text-decoration: none;
             }
         }
     }
 }
+
+@mixin body_text() {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1.5em;
+}
+
+.txt-list {
+    @include body_text()
+}
+
+@mixin fbox() {
+    display: flex;
+}
+@mixin jc-center() {
+    @include fbox();
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin circle($size) {
+    width: $size;
+    height: $size;
+    border-radius: $size/2;
+}
+
+@include circle(100px);
+
+$varname: red;
+
+// color: red;
+// coler: $varname;
+
+.txt {
+    $varname: blue !global; //전역변수 전환
+    @if($varname == 'red') {
+        color: yellow;
+    } @else if($varname == 'blue'){
+        color: pink;
+    }
+
+    @for $i from 1 to 10 {
+        종료만큼 = 종로만큼 감  i <= 10 
+    }
+
+    @for $i from 1 through 10 {
+        종료직전 = 종류까지 도달하지 않음 i < 10
+        .txt-list#{$i} { //== .txt-list1 
+            font-size: 10px * $i;
+        }
+    }
+}
+
+<div class = 'alert_box error'>
+.alert_box {
+    border-radius: 4px;
+    padding: 1em;
+
+    &.error {
+        @extend .alert_box
+        background-color: rgba(red,0.5);
+    }
+}
+
+$size: (
+    'padding-xs': 4px,
+    'padding-sm': 8px
+);
+
+padding: map.get($size, 'padding-sm');
+
+padding: {
+    left: 10px;
+    right: 10px;
+};
+
+background: {
+    image: url('asd');
+    repeat: no-repeat;
+    size: cover;
+    position: center;
+};
+
+[class ^= ic-] {
+    background: {
+        // image: url('asd');
+        repeat: no-repeat;
+        size: cover;
+        position: center;
+    };
+};
+// // 주석은 css 파일로 안 감
+/* /* 주석은 css 파일로 감
+// pinterest

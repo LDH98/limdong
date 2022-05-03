@@ -29,3 +29,10 @@ live sass 편집
 
 sass 폴더 만든 후
 test.scss 만들기
+
+npx create-react-app 파일 이름
+
+cd 파일 이름
+npm start
+
+react developer tools 추가 크롬
